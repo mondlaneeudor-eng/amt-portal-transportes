@@ -959,3 +959,168 @@ button:focus-visible {
     width: 100%;
   }
 }
+
+/* --------------------------- PWA install / update -------------------------- */
+
+.install-banner,
+.update-banner {
+  position: fixed;
+  z-index: 40;
+  background: #fff;
+  border: 1px solid var(--amt-card-border);
+  border-radius: 14px;
+  box-shadow: var(--amt-shadow-card-hover);
+  animation: install-banner-in 220ms ease;
+}
+
+.install-banner {
+  right: 20px;
+  bottom: 20px;
+  width: min(320px, calc(100vw - 40px));
+  padding: 16px 18px;
+}
+
+.install-banner__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 8px;
+  background: #f2f6fc;
+  color: var(--amt-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.install-banner__close:hover {
+  background: #e6ecf5;
+}
+
+.install-banner__title {
+  margin: 0 26px 6px 0;
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: var(--amt-navy);
+}
+
+.install-banner__text {
+  margin: 0 0 14px;
+  font-size: 0.85rem;
+  color: var(--amt-slate);
+  line-height: 1.5;
+}
+
+.install-banner__icon {
+  font-size: 0.95em;
+}
+
+.install-banner__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.install-banner__primary {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  border-radius: var(--amt-radius-button);
+  background: var(--amt-green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background-color var(--amt-transition);
+}
+
+.install-banner__primary:hover {
+  background: var(--amt-green-dark);
+}
+
+.install-banner__secondary {
+  padding: 10px 14px;
+  border: 1px solid var(--amt-card-border);
+  border-radius: var(--amt-radius-button);
+  background: #fff;
+  color: var(--amt-slate);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background-color var(--amt-transition);
+}
+
+.install-banner__secondary:hover {
+  background: #f7f9fc;
+}
+
+.update-banner {
+  left: 20px;
+  bottom: 20px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: min(360px, calc(100vw - 40px));
+}
+
+.update-banner__text {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--amt-navy);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.update-banner__button {
+  flex-shrink: 0;
+  padding: 9px 16px;
+  border: none;
+  border-radius: var(--amt-radius-button);
+  background: var(--amt-green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color var(--amt-transition);
+}
+
+.update-banner__button:hover {
+  background: var(--amt-green-dark);
+}
+
+@keyframes install-banner-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .install-banner,
+  .update-banner {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .install-banner,
+  .update-banner {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    width: auto;
+  }
+
+  /* Stack rather than overlap on the rare occasion both are shown at once. */
+  .install-banner ~ .update-banner {
+    bottom: 168px;
+  }
+}

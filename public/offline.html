@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b2a5c" />
+    <title>Sem ligação | AMT</title>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        color: #0b2a5c;
+        padding: 24px;
+      }
+      .card {
+        max-width: 420px;
+        text-align: center;
+      }
+      img {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-size: 1.4rem;
+        margin: 0 0 12px;
+      }
+      p {
+        color: #55617a;
+        line-height: 1.55;
+        margin: 0 0 24px;
+      }
+      button {
+        border: none;
+        border-radius: 10px;
+        background: #0c8a48;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.98rem;
+        padding: 13px 28px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #086b38;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <img src="/icon-96.png" alt="Logótipo da Agência Metropolitana de Transportes" width="64" height="64" />
+      <h1>Sem ligação à internet</h1>
+      <p>
+        Não foi possível ligar ao Portal AMT. Verifique a sua ligação e tente
+        novamente.
+      </p>
+      <button type="button" onclick="location.reload()">Tentar novamente</button>
+    </div>
+  </body>
+</html>
