@@ -1,9 +1,14 @@
-import { MaputoSkyline } from "./MaputoSkyline";
+import maputoBridgePanorama from "../assets/images/maputo-bridge-panorama.jpg";
 
 export function Hero() {
   return (
-    <section className="hero" aria-labelledby="hero-title">
-      <MaputoSkyline />
+    <section
+      className="hero"
+      aria-labelledby="hero-title"
+      style={{
+        backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0.5) 0%, rgba(234,244,252,0.22) 40%, rgba(255,255,255,0.88) 100%), url(${maputoBridgePanorama})`,
+      }}
+    >
       <div className="hero__content">
         <div className="hero__text">
           <h1 id="hero-title" className="hero__title">

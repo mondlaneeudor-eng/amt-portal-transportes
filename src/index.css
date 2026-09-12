@@ -232,29 +232,14 @@ button:focus-visible {
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(
-    180deg,
-    var(--amt-hero-top) 0%,
-    var(--amt-hero-bottom) 100%
-  );
+  /* Photo + semi-transparent institutional-tone overlay set inline (see
+     Hero.tsx) so the bundler can hash the image URL; sizing/position/repeat
+     stay here. */
+  background-color: var(--amt-hero-bottom);
+  background-size: cover, cover;
+  background-position: center, center 46%;
+  background-repeat: no-repeat, no-repeat;
   padding: 56px 24px 48px;
-}
-
-.hero-skyline {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.55;
-  pointer-events: none;
-}
-
-.hero-skyline__buildings {
-  fill: #c3d9ee;
-}
-
-.hero-skyline__bridge {
-  stroke: #a9c6e3;
 }
 
 .hero__content {
@@ -386,16 +371,11 @@ button:focus-visible {
   color: #2f6fd6;
 }
 
-.service-card__description {
-  margin: 0;
-  font-size: 0.92rem;
-  color: var(--amt-slate);
-  line-height: 1.5;
-  flex: 1;
-}
-
 .service-card__footer {
-  margin-top: 18px;
+  /* Pins to the bottom of the (flex, equal-height-via-grid) card no matter
+     how much text precedes it, so the divider/status/button row lines up
+     across all four cards even though only one has the extra info line. */
+  margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid var(--amt-divider);
   display: flex;
@@ -627,6 +607,12 @@ button:focus-visible {
   .hero__caption {
     text-align: left;
   }
+
+  .hero {
+    /* Narrower, taller box: bias the focal point right so the bridge and
+       the city skyline stay in frame instead of being cropped off. */
+    background-position: center, 68% 40%;
+  }
 }
 
 @media (max-width: 640px) {
@@ -649,6 +635,7 @@ button:focus-visible {
 
   .hero {
     padding: 36px 16px 32px;
+    background-position: center, 82% 38%;
   }
 
   .hero__subtitle {

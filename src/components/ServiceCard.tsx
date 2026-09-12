@@ -28,7 +28,6 @@ export function ServiceCard({ service, onOpenOptions }: ServiceCardProps) {
         {service.extraInfo && (
           <p className="service-card__extra">{service.extraInfo}</p>
         )}
-        <p className="service-card__description">{service.description}</p>
 
         <div className="service-card__footer">
           <p className="status-line">
