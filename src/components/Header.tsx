@@ -3,7 +3,11 @@ import amtLogo from "../assets/images/amt-logo.png";
 import { HelpIcon, BellIcon, UserIcon, ChevronDownIcon } from "./icons";
 import { HelpModal } from "./HelpModal";
 
-export function Header() {
+interface HeaderProps {
+  onOpenControlRoom: () => void;
+}
+
+export function Header({ onOpenControlRoom }: HeaderProps) {
   const [helpOpen, setHelpOpen] = useState(false);
 
   return (
@@ -46,7 +50,7 @@ export function Header() {
               <span className="notification-dot" aria-hidden="true" />
             </button>
 
-            <button type="button" className="control-room">
+            <button type="button" className="control-room" onClick={onOpenControlRoom}>
               <span className="control-room__avatar">
                 <UserIcon width={16} height={16} />
               </span>

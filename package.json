@@ -10,13 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "cookie": "^2.0.1",
+    "jose": "^6.2.12",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@types/cookie": "^0.6.0",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
+    "@vercel/node": "^13.0.0",
     "@vitejs/plugin-react": "^6.1.1",
     "oxlint": "^1.81.0",
     "typescript": "~6.0.2",

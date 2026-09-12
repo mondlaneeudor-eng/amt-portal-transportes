@@ -685,3 +685,290 @@ button:focus-visible {
     margin-left: 0;
   }
 }
+
+/* ------------------------------ Sala de Controlo --------------------------- */
+/* New, self-contained additions only — nothing above this line is touched. */
+
+.control-room-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
+}
+
+.control-room-modal__logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  margin-bottom: 4px;
+}
+
+.control-room-modal .modal-body {
+  margin-bottom: 8px;
+}
+
+.control-room-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  margin-top: 8px;
+}
+
+.control-room-form__label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--amt-navy);
+}
+
+.control-room-form__field {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.control-room-form__field input {
+  flex: 1;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--amt-card-border);
+  border-radius: var(--amt-radius-button);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--amt-navy);
+  background: #fff;
+}
+
+.control-room-form__field input:focus-visible {
+  outline: 3px solid #2f7fe0;
+  outline-offset: 1px;
+}
+
+.control-room-form__toggle {
+  flex-shrink: 0;
+  padding: 0 16px;
+  border: 1px solid var(--amt-card-border);
+  border-radius: var(--amt-radius-button);
+  background: #f2f6fc;
+  color: var(--amt-navy);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color var(--amt-transition);
+}
+
+.control-room-form__toggle:hover {
+  background: #e6ecf5;
+}
+
+.control-room-form__error {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #fdecec;
+  color: #b3261e;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.control-room-form__submit {
+  margin-top: 4px;
+}
+
+/* Authenticated view */
+
+.control-room-page {
+  max-width: var(--amt-max-width);
+  margin: 0 auto;
+  padding: 40px 24px 64px;
+}
+
+.control-room-page__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.control-room-page__title {
+  margin: 0 0 6px;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 800;
+  color: var(--amt-navy);
+}
+
+.control-room-page__subtitle {
+  margin: 0;
+  color: var(--amt-slate);
+  font-size: 1rem;
+}
+
+.control-room-page__logout {
+  flex-shrink: 0;
+  padding: 10px 20px;
+  border-radius: var(--amt-radius-button);
+  border: 1.5px solid var(--amt-navy);
+  background: #fff;
+  color: var(--amt-navy);
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: background-color var(--amt-transition), color var(--amt-transition);
+}
+
+.control-room-page__logout:hover {
+  background: var(--amt-navy);
+  color: #fff;
+}
+
+.control-room-page__notice {
+  margin: 32px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--amt-divider);
+  text-align: center;
+  color: var(--amt-slate-light);
+  font-size: 0.85rem;
+}
+
+.control-room-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.credential-card {
+  background: var(--amt-card-bg);
+  border: 1px solid var(--amt-card-border);
+  border-radius: var(--amt-radius-card);
+  box-shadow: var(--amt-shadow-card);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.credential-card__icon {
+  background: var(--amt-icon-bg-blue);
+}
+
+.credential-card__address {
+  margin: -6px 0 0;
+  font-size: 0.85rem;
+  color: var(--amt-slate);
+  word-break: break-all;
+}
+
+.credential-card__instructions {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--amt-slate-light);
+  line-height: 1.5;
+}
+
+.credential-card__field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--amt-divider);
+}
+
+.credential-card__field-label {
+  flex-basis: 100%;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--amt-slate-light);
+}
+
+.credential-card__field-value {
+  flex: 1 1 140px;
+  min-width: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--amt-navy);
+  overflow-wrap: break-word;
+}
+
+.credential-card__field-value--password {
+  font-family: "Courier New", ui-monospace, monospace;
+  letter-spacing: 0.05em;
+}
+
+.credential-card__toggle,
+.credential-card__copy {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--amt-card-border);
+  background: #f7f9fc;
+  color: var(--amt-navy);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color var(--amt-transition);
+  white-space: nowrap;
+}
+
+.credential-card__toggle:hover,
+.credential-card__copy:hover:not(:disabled) {
+  background: #e6ecf5;
+}
+
+.credential-card__copy:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.credential-card__access {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.credential-card__restricted {
+  margin: 4px 0 0;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--amt-slate-light);
+}
+
+@media (max-width: 1100px) {
+  .control-room-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .control-room-page {
+    padding: 28px 16px 48px;
+  }
+
+  .control-room-page__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .control-room-page__logout {
+    align-self: flex-start;
+  }
+
+  .control-room-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .control-room-form__field {
+    flex-wrap: wrap;
+  }
+
+  .control-room-form__field input {
+    width: 100%;
+  }
+}
