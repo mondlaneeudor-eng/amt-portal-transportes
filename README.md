@@ -1,32 +1,63 @@
-# React + TypeScript + Vite
+# AMT | Sistemas de Monitoria e Gestão
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Portal institucional da **Agência Metropolitana de Transportes (AMT)** que centraliza o acesso aos sistemas de monitoria e gestão dos transportes da Área Metropolitana de Maputo:
 
-Currently, two official plugins are available:
+- Transporte Escolar
+- Transporte BMM
+- Transportes Municipais (Gestão de Activos / Relatórios)
+- Transporte Intermodal
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Este portal **não substitui** os sistemas existentes — funciona apenas como ponto de encaminhamento seguro para cada plataforma externa, que abre num novo separador.
 
-## React Compiler
+## Requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [Node.js](https://nodejs.org/) 18 ou superior
+- npm (incluído com o Node.js)
 
-## Expanding the Oxlint configuration
+## Como executar em desenvolvimento
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Abre depois o endereço indicado no terminal (por omissão [http://localhost:5173](http://localhost:5173)).
+
+## Compilar para produção
+
+```bash
+npm run build
+```
+
+Os ficheiros optimizados são gerados em `dist/`. Para pré-visualizar essa compilação localmente:
+
+```bash
+npm run preview
+```
+
+## Verificar o código (lint)
+
+```bash
+npm run lint
+```
+
+## Estrutura do projecto
+
+```
+src/
+  assets/images/       Fotografias dos serviços e logótipo da AMT
+  components/          Componentes de UI (cabeçalho, hero, cartões, modais, ícones)
+  config/services.ts   Configuração central: títulos, descrições, imagens e URLs de destino
+  index.css            Estilos globais e tokens de cor da identidade AMT
+  App.tsx              Composição da página
+```
+
+### Alterar destinos ou textos dos serviços
+
+Todos os dados dos 4 cartões (título, descrição, imagem, URL de destino) estão centralizados em [`src/config/services.ts`](src/config/services.ts). O serviço **Transportes Municipais** usa `options` em vez de `href`, o que faz o botão "Aceder ao sistema" abrir um modal de escolha entre "Gestão de Activos" e "Relatórios".
+
+## Notas de segurança
+
+- Nenhuma credencial, senha ou token é armazenado ou apresentado neste portal.
+- Todos os acessos aos sistemas externos abrem em novo separador (`target="_blank"`) com `rel="noopener noreferrer"`.
+- Não são usados `iframe`s, dado que os sistemas externos podem bloquear incorporação.
