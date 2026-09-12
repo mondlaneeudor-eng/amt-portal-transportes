@@ -6,7 +6,7 @@
 // access code, session cookies and system credentials travel — nor any
 // non-GET request. See the fetch handler below for the explicit bypass.
 
-const CACHE_NAME = "amt-portal-static-v1";
+const CACHE_NAME = "amt-portal-static-v2";
 const OFFLINE_URL = "/offline.html";
 
 // Bypass entirely: no cache read, no cache write, no interception logic

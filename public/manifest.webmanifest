@@ -1,6 +1,6 @@
 {
-  "name": "AMT — Sistemas de Monitoria e Gestão",
-  "short_name": "AMT Monitoria",
+  "name": "AMT",
+  "short_name": "AMT",
   "description": "Portal integrado dos sistemas de monitoria e gestão dos transportes da Área Metropolitana de Maputo.",
   "start_url": "/",
   "scope": "/",

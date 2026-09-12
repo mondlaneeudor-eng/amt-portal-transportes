@@ -16,18 +16,26 @@
 
     <!-- Android / general -->
     <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="application-name" content="AMT Monitoria" />
+    <meta name="application-name" content="AMT" />
 
     <!-- iOS home-screen app metadata -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-title" content="AMT Monitoria" />
+    <meta name="apple-mobile-web-app-title" content="AMT" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
     <!-- Windows tiles -->
     <meta name="msapplication-TileColor" content="#0b2a5c" />
     <meta name="msapplication-TileImage" content="/icon-144.png" />
 
-    <title>AMT | Sistemas de Monitoria e Gestão</title>
+    <!--
+      The manifest's `name`/`short_name` are just "AMT" and this page title
+      is only "Sistemas de Monitoria e Gestão" (no repeated "AMT") on
+      purpose: installed Chromium PWA windows compose their title bar as
+      "<app name> — <page title>", so together they read as one clean
+      "AMT — Sistemas de Monitoria e Gestão" instead of the app name
+      appearing twice.
+    -->
+    <title>Sistemas de Monitoria e Gestão</title>
   </head>
   <body>
     <div id="root"></div>
