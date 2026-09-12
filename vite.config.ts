@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/amt-portal-transportes/',
+  // Served at the domain root under the custom domain (amtmaputo.co.mz).
+  base: '/',
   plugins: [react()],
 })
