@@ -1,3 +1,4 @@
+import { capturePostHogEvent } from "../posthog";
 import type { ServiceConfig } from "../config/services";
 import { BusIcon, TrainIcon, ArrowRightIcon } from "./icons";
 
@@ -39,7 +40,12 @@ export function ServiceCard({ service, onOpenOptions }: ServiceCardProps) {
             <button
               type="button"
               className="access-button"
-              onClick={() => onOpenOptions?.(service)}
+              onClick={() => {
+                capturePostHogEvent("municipal_service_options_opened", {
+                  service_id: service.id,
+                });
+                onOpenOptions?.(service);
+              }}
               aria-label={`Aceder ao sistema de ${service.title} (abre uma janela para escolher a plataforma)`}
             >
               <span>Aceder ao sistema</span>
@@ -51,6 +57,9 @@ export function ServiceCard({ service, onOpenOptions }: ServiceCardProps) {
               href={service.href}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                capturePostHogEvent("service_accessed", { service_id: service.id })
+              }
               aria-label={`Aceder ao sistema de ${service.title} (abre num novo separador)`}
             >
               <span>Aceder ao sistema</span>

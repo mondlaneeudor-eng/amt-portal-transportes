@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { capturePostHogEvent, logPostHogInfo } from "../../posthog";
 import {
   fetchCredentials,
   fetchSession,
@@ -80,14 +81,23 @@ export function ControlRoomContainer({ onExit }: ControlRoomContainerProps) {
   async function handleSubmitCode(code: string) {
     const result = await loginRequest(code);
     if (!result.ok) {
+      capturePostHogEvent("control_room_login_failed");
+      logPostHogInfo("control room authentication rejected", {
+        flow: "control_room",
+      });
       return result.error;
     }
+    capturePostHogEvent("control_room_login_succeeded");
+    logPostHogInfo("control room authentication accepted", {
+      flow: "control_room",
+    });
     await loadCredentials();
     return null;
   }
 
   async function handleLogout() {
     await logoutRequest();
+    capturePostHogEvent("control_room_logged_out");
     clearCredentials();
     setStatus("unauthenticated");
     onExit();

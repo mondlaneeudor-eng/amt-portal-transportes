@@ -1,3 +1,4 @@
+import { capturePostHogEvent } from "../posthog";
 import type { ServiceOption } from "../config/services";
 import { Modal } from "./Modal";
 import { ArrowRightIcon } from "./icons";
@@ -25,6 +26,11 @@ export function MunicipalModal({ options, onClose }: MunicipalModalProps) {
             href={option.href}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              capturePostHogEvent("municipal_service_accessed", {
+                platform: option.label,
+              })
+            }
           >
             <span>{option.label}</span>
             <ArrowRightIcon width={18} height={18} />

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { capturePostHogEvent } from "../../posthog";
 import type { ServiceCredential } from "../../lib/controlRoomApi";
 import { BusIcon, TrainIcon, ArrowRightIcon } from "../icons";
 import { CREDENTIAL_UNAVAILABLE_MESSAGE } from "./unavailable";
@@ -36,6 +37,21 @@ export function CredentialCard({ service, passwordVisible, onTogglePassword }: C
     if (!value) return;
     const ok = await copyToClipboard(value);
     setCopyState({ field, ok });
+    if (ok) {
+      capturePostHogEvent("credential_copied", {
+        service_id: service.id,
+        credential_field: field,
+      });
+    }
+  }
+
+  function handlePasswordToggle() {
+    if (!passwordVisible) {
+      capturePostHogEvent("credential_password_revealed", {
+        service_id: service.id,
+      });
+    }
+    onTogglePassword();
   }
 
   function copyLabel(field: FieldKind, defaultLabel: string) {
@@ -79,7 +95,7 @@ export function CredentialCard({ service, passwordVisible, onTogglePassword }: C
               : MASKED_PASSWORD}
         </span>
         {service.password.value && (
-          <button type="button" className="credential-card__toggle" onClick={onTogglePassword}>
+          <button type="button" className="credential-card__toggle" onClick={handlePasswordToggle}>
             {passwordVisible ? "Ocultar" : "Mostrar"}
           </button>
         )}
@@ -102,6 +118,12 @@ export function CredentialCard({ service, passwordVisible, onTogglePassword }: C
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() =>
+                capturePostHogEvent("credential_system_accessed", {
+                  service_id: service.id,
+                  platform: link.label,
+                })
+              }
               aria-label={`Aceder a ${link.label} (abre num novo separador)`}
             >
               <span>Aceder — {link.label}</span>
@@ -114,6 +136,11 @@ export function CredentialCard({ service, passwordVisible, onTogglePassword }: C
             href={service.address}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() =>
+              capturePostHogEvent("credential_system_accessed", {
+                service_id: service.id,
+              })
+            }
             aria-label={`Aceder ao sistema de ${service.title} (abre num novo separador)`}
           >
             <span>Aceder ao sistema</span>
