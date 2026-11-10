@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { capturePostHogEvent } from "../posthog";
 
 /**
  * Registers the service worker and tracks whether an updated version is
@@ -55,6 +56,7 @@ export function useServiceWorkerUpdate() {
   }, []);
 
   const applyUpdate = useCallback(() => {
+    capturePostHogEvent("pwa_update_applied");
     waitingWorker.current?.postMessage({ type: "SKIP_WAITING" });
     setUpdateAvailable(false);
   }, []);

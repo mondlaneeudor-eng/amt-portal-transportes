@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
+import { capturePostHogEvent } from "../posthog";
 import { isIOS, isRunningStandalone, isSafari } from "../lib/pwaEnvironment";
 
 const DISMISSED_AT_KEY = "amt-install-dismissed-at";
@@ -62,7 +63,8 @@ export function useInstallPrompt() {
   const install = useCallback(async () => {
     if (!deferredPrompt) return;
     await deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
+    const { outcome } = await deferredPrompt.userChoice;
+    capturePostHogEvent("pwa_install_prompt_responded", { outcome });
     setDeferredPrompt(null);
     setVisible(false);
   }, [deferredPrompt]);
